@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  
+<style>
+      .image {
+  font-size: 0;
+  text-align: center;
+  width: 250px;  /* Container's dimensions */
+  height: 300px;
+}
+img {
+  display: inline-block;
+  vertical-align: middle;
+  max-height: 200%;
+  max-width: 200%;
+}
+/* .trick {
+  display: inline-block;
+  vertical-align: middle;
+  height: 150px;
+} */
+</style>
+</head>
+<body>
+    <select name="choice" id="choice" size="3" onchange="createDoll(this.value)">
+        <option value="0">choose gender</option>
+        <option value="1">male</option>
+        <option value="2">female</option>
+        <option value="3">transgender</option>
+    </select>
+    <!-- <div class="image">
+        <div class="trick"></div>
+        <img src="http://placekitten.com/415/200"/>
+      </div> -->
+    <div id="display_here" class="image" >
+        
+    </div>
+<script>
+  function createDoll(userChoice) {
+    var output = document.getElementById("display_here");
+    output.innerHTML = "";
+
+    var links = [
+        "/practise/images/cs.jpg",
+        "/practise/images/male.png",
+        "/practise/images/female.png",
+        "/practise/images/tg.jpg",
+        
+    ];
+
+    var choices = ["choose gender", "male", "female", "transgender"];
+    // var sentence = "<p>You picked a " + choices[userChoice] + " doll.</p>"
+    var img = '<img src="' + links[userChoice] + '">';
+
+    output.innerHTML =  img;
+    // document.getElementById("display_here").style.height = "10px";
+  }
+</script>
+</body>  
+</html>  

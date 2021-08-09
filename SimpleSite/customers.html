@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href=
+"https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+    <style>
+        /* * {
+          box-sizing: border-box;
+        } */
+        
+        /* Create two equal columns that floats next to each other */
+        .column {
+          float: left;
+          width: 50%;
+          padding: 10px;
+        }
+        
+        /* Clear floats after the columns */
+        /* .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        } */
+        /* Style the buttons */
+        .btn {
+          border: none;
+          outline: none;
+          padding: 12px 16px;
+          background-color: #f1f1f1;
+          cursor: pointer;
+        }
+        
+        .btn:hover {
+          background-color: #ddd;
+        }
+        
+        .btn.active {
+          background-color: #ddd;
+          /* color: white; */
+        }
+        </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary" style="margin-left: 1%; margin-right: 1%;" >
+        <a> </a>
+        <a class="navbar-brand" href="#" style="margin-left: 10%; margin-right: 10%;" >
+            <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            customers managere</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active" style="font-weight: bold;">
+                <a class="nav-link" href="customers.html">customers </a>
+              </li>
+            <li class="nav-item active" style="font-weight: bold;">
+              <a class="nav-link" href="#">orders </a>
+            </li>
+            <li class="nav-item active" style="font-weight: bold;">
+              <a class="nav-link" href="about.html">about</a>
+            </li>
+            <li class="nav-item active" style="font-weight: bold;">
+              <a class="nav-link" href="login.js">login</a>
+            </li>
+            <li class="nav-item active" style="font-weight: bold;">
+              <a class="nav-link " href="#">Disabled</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <h3 style="margin-left: 12%; margin-top: 1%;">
+        <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+        Customers
+    </h3>
+
+    <!-- <div id="btnContainer" style="margin-left: 12%; margin-top: 1%;">
+       <ul> <button class="btn" onclick="listView()" style="margin-right: 2%;"><i class="fa fa-bars"></i> List</button> 
+        <button class="btn active" onclick="gridView()" style="margin-right: 2%;"><i class="fa fa-th-large"></i> Grid</button>
+        <button class="btn active" onclick="mapView()" style="margin-right: 2%;"><i class="fa fa-map-marker"></i> map view</button>  
+        <button class="btn active" onclick="gridView()" ><i class="fa fa-plus"></i> New customer</button>
+       
+      </ul> 
+        <form class="form-inline my-2 my-lg-0" style="margin-right: 44%;">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    
+      </div>     -->
+    
+
+
+
+    <!-- <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </div> -->
+
+      <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-left: 12%; margin-right: 8%; margin-top: 1%;" > -->
+        
+      
+        <div id="btnContainer" style="margin-left: 12%; margin-top: 1%;">
+          <ul> <button class="btn" onclick="listView()" style="margin-right: 2%;"><i class="fa fa-bars"></i> List</button> 
+           <button class="btn active" onclick="gridView()" style="margin-right: 2%;"><i class="fa fa-th-large"></i> Grid</button>
+           <button class="btn active" onclick="mapView()" style="margin-right: 2%;"><i class="fa fa-map-marker"></i> map view</button>
+           <a href="sample.html" class="btn active"> <i class="fa fa-plus"></i> map view</a>  
+            <!-- <div id="map" style="width: 960px; height: 500px"> <button class="btn active" onclick="mapView()" style="margin-right: 2%;"><i class="fa fa-map-marker"></i> map view</button></div>
+  
+ Get the leaflet JavaScript file 
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>  -->
+             <a href="newcustomer.html" class="btn active"> <i class="fa fa-plus"></i> New customer</a>
+          
+         </ul> 
+           <form class="form-inline my-2 my-lg-0" style="margin-right: 44%;">
+             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+           </form>
+       
+         </div>    
+      <!-- </nav> -->
+
+
+ 
+      <div class="row" style="margin-left: 12%; margin-right: 12%; margin-top: 1%;">
+        <div class="col-sm-3" style="background-color:#ccc;">
+          <div class="card">
+            <div class="card-header" >babji<a class="fa fa-pencil-square-o" style="margin-left: 75%;" href="edit.html" aria-hidden="true"></a></div>
+            <div class="card-body text-primary">
+              <div class="row">
+                <div class="column" >
+                  <img src="../practise/images/male.png" width="100" height="100"></img>
+
+                </div>
+                <div class="column">
+                  <h5 class="card-title" id="city12">vizag</h5>
+              <p class="card-text">andhra</p>
+              <a href="#" class="card-link">view orders</a>
+
+                </div>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+      
+          <!-- <div class="col-sm-3" style="background-color:#ccc;">
+            <div class="card">
+              <div class="card-header">madhu</div>
+              <div class="card-body text-primary">
+                <div class="row">
+                  <div class="column" >
+                    <img src="../practise/images/male.png" width="100" height="100"></img>
+  
+                  </div>
+                  <div class="column">
+                    <h5 class="card-title">hyd</h5>
+                <p class="card-text">telangana</p>
+                <a href="#" class="card-link">view orders</a>
+  
+                  </div>
+                </div>
+             
+              </div>
+            </div>
+          </div> -->
+      
+        
+        
+
+          <!-- <div class="col-sm-3" style="background-color:#ccc;">
+            <div class="card">
+              <div class="card-header">malla</div>
+              <div class="card-body text-primary">
+                <div class="row">
+                  <div class="column" >
+                    <img src="../practise/images/male.png" width="100" height="100"></img>
+  
+                  </div>
+                  <div class="column">
+                    <h5 class="card-title">rjy</h5>
+                <p class="card-text">andhra</p>
+                <a href="#" class="card-link">view orders</a>
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- <div class="col-sm-3" style="background-color:#ccc;">
+            <div class="card">
+              <div class="card-header" >Aarthi<a class="fa fa-pencil-square-o" style="margin-left: 75%;" href="edit.html" aria-hidden="true"></a></div>
+              <div class="card-body text-primary">
+                <div class="row">
+                  <div class="column" >
+                    <img src="../practise/images/female.png" width="100" height="100"></img>
+  
+                  </div>
+                  <div class="column">
+                    <h5 class="card-title">pondi</h5>
+                <p class="card-text">tamilnadu</p>
+                <a href="#" class="card-link">view orders</a>
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div> -->
+
+      <!-- <div id="city123">
+          bgafe
+      </div> -->
+      
+
+   
+
+
+    
+      <!-- <div class="row">
+        <div class="column" style="background-color:rgb(173, 10, 10);">
+          <div class="col-sm-3" style="max-width: 18rem;">
+            <div class="card" style="width: 18rem;">
+              <div class="card-header">Header</div>
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column" style="background-color:rgb(49, 214, 57);">
+          <div class="col-sm-3" style="max-width: 18rem;">
+            <div class="card">
+              <div class="card-header">Header</div>
+              <div class="card-body text-primary">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">view orders</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column" style="background-color:#bbb;">
+          <div class="col-sm-3" style="max-width: 18rem;">
+            <div class="card">
+              <div class="card-header">Header</div>
+              <div class="card-body text-primary">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">view orders</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> --> 
+      <!-- <div style="margin-left: 22%; margin-right: 22%;">
+      <div class="row">
+        <div class="column sm-4" style="background-color:#ccc;">
+          <h2>Column 4</h2>
+          <p>Some text..</p>
+        </div>
+        <div class="column" style="background-color:rgb(230, 23, 23);">
+          <div class="card">
+            <div class="card-header">Header</div>
+            <div class="card-body text-primary">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="card-link">view orders</a>
+            </div>
+          </div>
+        </div>
+        <div class="column sm-4" style="background-color:#ddd;">
+          <h2>Column 5</h2>
+          <p>Some text..</p>
+        </div>
+        <div class="column sm-4" style="background-color:#ddd;">
+          <h2>Column 6</h2>
+          <p>Some text..</p>
+        </div>
+        <!-- <div class="column" style="max-width: 18rem;">
+          <div class="card">
+            <div class="card-header">Header</div>
+            <div class="card-body text-primary">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="card-link">view orders</a>
+            </div>
+          </div>
+        </div> -->
+       <!-- <div class="column sm-6" style="background-color:rgb(226, 9, 9);">
+          <div class="card">
+            <div class="card-header">Header</div>
+            <div class="card-body text-primary">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="card-link">view orders</a>
+            </div>
+          </div>
+        </div>
+        <div class="column sm-4" style="max-width: 18rem;">
+          <div class="card">
+            <div class="card-header">Header</div>
+            <div class="card-body text-primary">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="card-link">view orders</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+   
+      <script>
+
+// Get the elements with class="column"
+var elements = document.getElementsByClassName("col-sm-3");
+
+// Declare a loop variable
+var i;
+
+function listView() {
+  for (i = 0; i < elements.length; i++) {
+    elements[i].style.width = "100%";
+  }
+}
+
+  // var n1 = localStorage.getItem("txtValue");
+
+
+
+// Grid View
+function gridView() {
+  for (i = 0; i < elements.length; i++) {
+    elements[i].style.width = "25%";
+  }
+}
+function mapView(){
+  
+          const map = L.map('map')
+        
+          // Get the tile layer from OpenStreetMaps
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        
+          // Specify the maximum zoom of the map
+          maxZoom: 19,
+        
+          // Set the attribution for OpenStreetMaps
+          attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          }).addTo(map);
+        
+          // Set the view of the map
+          // with the latitude, longitude and the zoom value
+          map.setView([17.836558, 82.437057], 6);
+          // map.setView([20.593684, 78.96288], 10);
+            
+          // Set the map view to the user's location
+          // Uncomment below to set map according to user location
+          // map.locate({setView: true, maxZoom: 16});
+        
+          // Show a market at the position of the Eiffel Tower
+          // let eiffelMarker = L.marker([20.593684, 78.96288]).addTo(map);
+          let eiffelMarker = L.marker([17.836558, 82.437057]).addTo(map);
+        
+          // Bind popup to the marker with a popup
+          // eiffelMarker.bindPopup("").openPopup();
+        }
+        document.getElementById("city12").innerHTML=localStorage.getItem("txtValue2");
+        document.getElementById("data22").innerHTML=localStorage.getItem("txtValue2");
+
+
+  
+
+      </script>
+
+ <script
+          src="customers.js">
+  
+        </script> 
+        
+    
+</body>

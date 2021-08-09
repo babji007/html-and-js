@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- <script>
+            function GEEKFORGEEKS() {
+                var name = 
+                    document.forms["RegForm"]["Name"];
+                var email = 
+                    document.forms["RegForm"]["EMail"];
+                var phone = 
+                    document.forms["RegForm"]["Telephone"];
+                var what = 
+                    document.forms["RegForm"]["Subject"];
+                var password = 
+                    document.forms["RegForm"]["Password"];
+                var address = 
+                    document.forms["RegForm"]["Address"];
+  
+                if (name.value == "") {
+                    window.alert("Please enter your name.");
+                    name.focus();
+                    return false;
+                }
+  
+                if (address.value == "") {
+                    window.alert("Please enter your address.");
+                    address.focus();
+                    return false;
+                }
+  
+                if (email.value == "") {
+                    window.alert(
+                      "Please enter a valid e-mail address.");
+                    email.focus();
+                    return false;
+                }
+  
+                if (phone.value == "") {
+                    window.alert(
+                      "Please enter your telephone number.");
+                    phone.focus();
+                    return false;
+                }
+  
+                if (password.value == "") {
+                    window.alert("Please enter your password");
+                    password.focus();
+                    return false;
+                }
+  
+                if (what.selectedIndex < 1) {
+                    alert("Please enter your course.");
+                    what.focus();
+                    return false;
+                }
+  
+                return true;
+            }
+        </script> -->
+  
+        <style>
+            div {
+                box-sizing: border-box;
+                width: 100%;
+                border: 100px solid black;
+                float: left;
+                align-content: center;
+                align-items: center;
+            }
+  
+            form {
+                margin: 0 auto;
+                width: 600px;
+            }
+        </style>
+<script>
+function getData()
+{
+    //gettting the values
+    var email = document.getElementById("email").value;
+    // var password= document.getElementById("password").value; 
+    // var telephone= document.getElementById("telephone").value; 
+    var mobile= document.getElementById("mobile").value; 
+    //saving the values in local storage
+    localStorage.setItem("txtValue", email);
+    // localStorage.setItem("txtValue1", password);
+    localStorage.setItem("txtValue2", mobile);
+    // localStorage.setItem("txtValue3", telephone);   
+    // console.log(email);
+}
+</script>
+    </head>
+  
+    <body style="background-color: aqua;">
+        
+        <form name="RegForm" action="customers.html" 
+              onsubmit="return GEEKFORGEEKS(this.value)" method="GET" style="background-color: rgb(152, 14, 187);">
+              <!-- <p class="col-md-6">
+                <label for="inputEmail4" class="form-label">First name:</label>
+                <input type="email" size="65" class="form-control" id="inputEmail4">
+              </p> -->
+              <h1 style="text-align: center;">REGISTRATION FORM</h1>
+              <p style="margin-left: 3%;" id="fname">First Name: <input type="text" 
+                size="65" name="FName" /></p>
+                <br />
+            <p style="margin-left: 3%;" id="lname">Last Name: <input type="text" 
+                            size="65" name="LName" /></p>
+            
+            
+            <br />
+            <p style="margin-left: 3%;">CHOOSE GENDER:<select class="form-select" aria-label="Default select example" id="gen" onchange="createDoll(this.value)" >
+                <option value="0" >Choose gender</option>
+                <option value="1">male</option>
+                <option value="2">female</option>
+                <option value="3">trans gender</option>
+              </select>
+                </p>
+                <br />
+            <p style="margin-left: 3%;" id="email">E-mail: <input type="text" style="margin-left: 4%;"
+                            size="65" name="EMail" /></p>
+            <p style="margin-left: 3%;">
+                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                <label class="form-check-label" for="gridCheck1">
+                  Subscribe to get notifications
+                </label>
+            </p>
+            <br />
+            <p style="margin-left: 3%;" id="mobile">Mobile: <input type="text" style="margin-left: 3%;"
+                size="65" name="Telephone" /></p>
+    <br />
+            <p style="margin-left: 3%;">Address: <input type="text" style="margin-left: 2%;"
+                size="65" name="Address" />
+</p>
+            <!-- <p>Password: <input type="text" 
+                         size="65" name="Password" /></p>
+             -->
+           
+             <br />
+           <p style="margin-left: 3%;">
+                SELECT YOUR STATE
+                <select id="countrySelect" size="1" onchange="makeSubmenu(this.value)">
+                    <option value="" disabled selected>Choose State</option>
+                    <option>andhra</option>
+                    <option>tamilnadu</option>
+                    <option>telangana</option>
+                    <option>kerala</option>
+                    <option>goa</option>
+                    </select>
+                </p>
+                <p style="margin-left: 3%;">
+                    SELECT YOUY CITY
+                    <select id="citySelect" size="1" >
+                        <option value="" disabled selected>Choose City</option>
+                        <option></option>
+                        </select>
+                    <!-- <button onclick="displaySelected()">show selected</button>-->
+            </p>
+            <br />
+            <br />
+            <!-- <p>Comments: <textarea cols="55" 
+                              name="Comment"> </textarea></p> -->
+            <p style="text-align: end; margin-right:10%;"> 
+                <!-- <a href="index.html">
+                   <button> <a href="index.html" class="btn active"> <i class="fa fa-plus"></i> send</a></button> -->
+                <input type="submit" 
+                       value="send" name="Submit" onclick="getData()"/>
+                    </a>
+
+                <input type="reset" 
+                       value="Reset" name="Reset" />
+            </p>
+            <br />
+
+
+            <!-- <select id="countrySelect" size="1" onchange="makeSubmenu(this.value)">
+                <option value="" disabled selected>Choose State</option>
+                <option>andhra</option>
+                <option>tamilnadu</option>
+                <option>telangana</option>
+                <option>kerala</option>
+                <option>goa</option>
+                </select>
+                <select id="citySelect" size="1" >
+                <option value="" disabled selected>Choose City</option>
+                <option></option>
+                </select>
+                <button onclick="displaySelected()">show selected</button> -->
+                
+               
+        </form>
+        <script src="ex.js"></script>
+          <script src="img.js"></script>   
+        <script type="text/javascript" src="newcustomer.js">
+        
+        </script>
+
+      
+    </body>
+</html>

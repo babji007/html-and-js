@@ -81,10 +81,10 @@ function displayCurrentQuestion(){
     var choiceList = document.querySelector('.quizContainer > .choiceList');
     var numChoices = questions[currentQuestion].choices.length;
 
-    //Set the questionClass text to the current question
+  
     questionClass.innerText = question;
 
-    //Remove all current <li> elements (if any)
+  
     choiceList.innerHTML = '';
 
     var choice;
